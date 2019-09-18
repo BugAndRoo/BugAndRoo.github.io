@@ -1,0 +1,11 @@
+{% assign pageStyle = page.url | remove : ".html" | prepend : '/styles/page' | append : '.min.css' %}
+{% capture html %}
+    {% for static_file in site.static_files %}
+        {% if static_file.path ==  pageStyle %}
+    <link rel="stylesheet" href='{{ pageStyle }}?t={{ static_file.modified_time | date: "%s" }}' />{% break %}
+        {% endif %}
+    {% endfor %}
+{% endcapture %}
+{% if html %}
+    {{ html | strip }}
+{% endif %}

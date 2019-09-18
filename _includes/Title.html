@@ -1,0 +1,10 @@
+{% capture theTitle %}
+{% if site.title and page.title %}
+            {{ page.title }} • {{ site.title }}
+        {% elsif page.title %}
+            {{ page.title }}
+        {% elsif site.title %}
+            {{ site.title }}
+        {% endif %}
+{% endcapture %}
+    <title>{{ theTitle | strip}}</title>
